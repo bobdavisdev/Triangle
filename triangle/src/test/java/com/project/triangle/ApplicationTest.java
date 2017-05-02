@@ -57,11 +57,11 @@ public class ApplicationTest extends TestCase {
 			System.err.println(e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * Negative test cases
 	 */
-	
+
 	public void testNotScaleneTriangleType() {
 		try {
 			assertFalse(Triangle.getType(10, 10, 20).equals(
@@ -70,7 +70,7 @@ public class ApplicationTest extends TestCase {
 			System.err.println(e.getMessage());
 		}
 	}
-	
+
 	public void testNotIsoscelesTriangleType() {
 		try {
 			assertFalse(Triangle.getType(10, 10, 10).equals(
@@ -79,7 +79,7 @@ public class ApplicationTest extends TestCase {
 			System.err.println(e.getMessage());
 		}
 	}
-	
+
 	public void testNotEquilateralTriangleType() {
 		try {
 			assertFalse(Triangle.getType(10, 20, 30).equals(
@@ -88,5 +88,5 @@ public class ApplicationTest extends TestCase {
 			System.err.println(e.getMessage());
 		}
 	}
-	
+
 }

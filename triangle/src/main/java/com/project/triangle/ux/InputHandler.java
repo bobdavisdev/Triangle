@@ -1,5 +1,6 @@
 package com.project.triangle.ux;
 
+import java.io.Reader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ import com.project.triangle.exception.InvalidInputException;
 
 /**
  * 
- * @author babureddy CLass Handles User Input via console
+ * @author babureddy CLass Handles User Input via console.
  */
 
 public class InputHandler {
@@ -23,6 +24,19 @@ public class InputHandler {
 	 */
 	private InputHandler() {
 		super();
+	}
+
+	/**
+	 * function to ensure only one object is created for the Input Handler
+	 * Class.
+	 * 
+	 * @return InputHandler
+	 */
+	public synchronized static InputHandler getInstance() {
+		if (self == null) {
+			self = new InputHandler();
+		}
+		return self;
 	}
 
 	private void displayWelcomeText() {
@@ -93,10 +107,11 @@ public class InputHandler {
 						+ sideCtoALength);
 				TriangleTypes triangleType = Triangle.getType(sideAtoBLength,
 						sideBtoCLength, sideCtoALength);
-				System.out.println("Based on the  entered triangle sides "
-						+ sideAtoBLength + "," + sideBtoCLength + ","
-						+ sideCtoALength + ", its " + triangleType
-						+ "triangle");
+				System.out
+						.println("Based on the  entered triangle sides "
+								+ sideAtoBLength + "," + sideBtoCLength + ","
+								+ sideCtoALength + ", its " + triangleType
+								+ " triangle");
 				if (handleUserConfirmation()) {
 					continue;
 				} else {
@@ -106,6 +121,7 @@ public class InputHandler {
 				System.err.println("\n" + e.getMessage());
 			}
 		}
+		readInput.close();
 		System.exit(0);
 	}
 
@@ -149,19 +165,6 @@ public class InputHandler {
 			System.err.println("" + e.getMessage());
 		}
 		return input;
-	}
-
-	/**
-	 * function to ensure only one object is created for the Input Handler
-	 * Class.
-	 * 
-	 * @return InputHandler
-	 */
-	public synchronized static InputHandler getInstance() {
-		if (self == null) {
-			self = new InputHandler();
-		}
-		return self;
 	}
 
 }
